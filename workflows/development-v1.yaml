@@ -1,0 +1,89 @@
+schemaVersion: 1
+id: local-development
+version: 3
+description: Deterministic local development workflow without scoring or legacy ceremony tiers
+nodes:
+  - id: intake
+    type: agent
+    description: Capture the request, owned paths and acceptance evidence
+
+  - id: planning
+    type: agent
+    description: Produce the selected inline, structured or OpenSpec-backed implementation plan
+    requires: [intake, openspec-contract]
+
+  - id: openspec-contract
+    type: agent
+    description: Record durable requirements and behavior contracts before implementation planning
+    requires: [intake]
+    when:
+      signalsAll: [PLANNING_OPENSPEC]
+
+  - id: implementation
+    type: agent
+    description: Implement only the owned change
+    requires: [planning, bugfix-intake]
+
+  - id: verification
+    type: command
+    description: Run the configured fresh local verification
+    requires: [implementation, loop-execution]
+
+  - id: quality-assessment
+    type: agent
+    description: Pass every acceptance check with fresh verification; compare alternatives when the Run declares a solution tradeoff
+    requires: [verification]
+    when:
+      signalsAll: [QUALITY_GATE]
+
+  - id: cross-repo-parity
+    type: agent
+    description: Record a deterministic cross-repository consistency matrix
+    requires: [verification]
+    when:
+      signalsAll: [CROSS_REPO_AFFECTED]
+
+  - id: bugfix-intake
+    type: agent
+    description: Capture production impact, rollback path and verification limits
+    requires: [intake]
+    when:
+      signalsAll: [PRODUCTION_BUG]
+
+  - id: loop-execution
+    type: agent
+    description: Run bounded implement-check-inspect-adjust iterations and stop on acceptance or budget exhaustion
+    requires: [implementation]
+    when:
+      signalsAll: [EXECUTION_LOOP]
+
+  - id: sediment
+    type: agent
+    description: Write the required local record or record an explicit skip
+    requires: [quality-assessment, cross-repo-parity, bugfix-intake]
+
+  - id: atomic-commit-plan
+    type: agent
+    description: Declare exact paths and Conventional Commit messages
+    requires: [sediment]
+    when:
+      signalsAll: [COMMIT_REQUESTED]
+
+  - id: shadow-decision
+    type: agent
+    description: Produce a read-only commit decision before Git mutation
+    requires: [atomic-commit-plan]
+    when:
+      signalsAll: [COMMIT_REQUESTED]
+
+  - id: commit
+    type: agent
+    description: Create explicitly authorized local atomic commits without pushing
+    requires: [shadow-decision]
+    when:
+      signalsAll: [COMMIT_REQUESTED]
+
+  - id: complete
+    type: rule
+    description: Derive completion after sediment and optional local commit
+    requires: [sediment, commit]

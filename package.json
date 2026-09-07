@@ -1,0 +1,51 @@
+{
+  "name": "agent-evidence-flow",
+  "version": "1.0.0",
+  "description": "Local, evidence-driven workflow engine for AI-assisted software development",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woyaofei303/agent-evidence-flow.git"
+  },
+  "homepage": "https://github.com/woyaofei303/agent-evidence-flow#readme",
+  "bugs": {
+    "url": "https://github.com/woyaofei303/agent-evidence-flow/issues"
+  },
+  "bin": {
+    "workflow": "cli/workflow.mjs"
+  },
+  "files": [
+    "cli",
+    "src",
+    "scripts",
+    "templates",
+    "workflows",
+    "docs",
+    "test",
+    "install.sh",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "check": "node --test",
+    "lesson:1": "node scripts/demo-node-state-machine.mjs",
+    "lesson:2": "node scripts/demo-workflow-graph.mjs",
+    "lesson:3": "node scripts/demo-workflow-definition.mjs",
+    "lesson:4": "node scripts/demo-planner.mjs",
+    "lesson:5": "node scripts/demo-event-store.mjs",
+    "lesson:6": "node scripts/demo-runner.mjs",
+    "test": "node --test",
+    "workflow": "node cli/workflow.mjs",
+    "workflow:check": "node --test"
+  },
+  "dependencies": {
+    "execa": "^9.6.1",
+    "yaml": "^2.9.0",
+    "zod": "^4.4.3"
+  }
+}

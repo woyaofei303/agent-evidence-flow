@@ -1,0 +1,29 @@
+schemaVersion: 1
+id: lesson-three
+version: 1
+description: A minimal local workflow definition
+nodes:
+  - id: intake
+    type: rule
+    description: Classify the incoming task
+
+  - id: implementation
+    type: agent
+    description: Implement the requested change
+    requires:
+      - intake
+
+  - id: verification
+    type: command
+    description: Run focused verification
+    requires:
+      - implementation
+    timeoutMs: 30000
+    retry:
+      maxAttempts: 2
+
+  - id: complete
+    type: rule
+    description: Derive the final run status
+    requires:
+      - verification

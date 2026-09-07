@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "kind": "implementation",
+  "summary": "What changed",
+  "changedPaths": ["path/relative/to/the/selected/repository"],
+  "verificationScope": ["What the configured verifier must prove"],
+  "residualRisks": []
+}

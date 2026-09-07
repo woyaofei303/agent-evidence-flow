@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "kind": "openspec-contract",
+  "proposalPath": "openspec/changes/<task-id>/proposal.md",
+  "behavior": ["The required behavior or contract"],
+  "acceptance": ["A verifiable acceptance condition"],
+  "compatibility": []
+}

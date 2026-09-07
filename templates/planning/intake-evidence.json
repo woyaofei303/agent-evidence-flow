@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "kind": "intake",
+  "request": "Copy the registered request exactly",
+  "ownedPaths": ["path/relative/to/the/selected/repository"],
+  "acceptanceCriteria": ["An observable outcome"],
+  "assumptions": []
+}

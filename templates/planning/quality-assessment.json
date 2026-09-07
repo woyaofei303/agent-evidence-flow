@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "quality-assessment",
+  "checks": [
+    {
+      "criterion": "Exact intake acceptance criterion",
+      "passed": false,
+      "reference": "Source location and verification result",
+      "eventSequence": 1
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "verification",
+      "reference": "Use workflow evidence to populate the latest Run event"
+    }
+  ],
+  "decision": "verify-or-clarify"
+}

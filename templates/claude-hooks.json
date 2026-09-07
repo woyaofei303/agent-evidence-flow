@@ -1,0 +1,52 @@
+{
+  "SessionStart": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"$CLAUDE_PROJECT_DIR/tooling/ai-workflow/cli/workflow.mjs\" hook session-start"
+        }
+      ]
+    }
+  ],
+  "UserPromptSubmit": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"$CLAUDE_PROJECT_DIR/tooling/ai-workflow/cli/workflow.mjs\" hook user-prompt-submit"
+        }
+      ]
+    }
+  ],
+  "PreToolUse": [
+    {
+      "matcher": "Write|Edit|MultiEdit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"$CLAUDE_PROJECT_DIR/tooling/ai-workflow/cli/workflow.mjs\" hook pre-tool-use"
+        }
+      ]
+    },
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"$CLAUDE_PROJECT_DIR/tooling/ai-workflow/cli/workflow.mjs\" hook pre-tool-use"
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"$CLAUDE_PROJECT_DIR/tooling/ai-workflow/cli/workflow.mjs\" hook stop"
+        }
+      ]
+    }
+  ]
+}

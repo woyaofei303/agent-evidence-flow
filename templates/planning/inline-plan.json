@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "kind": "inline-plan",
+  "goal": "The requested outcome",
+  "ownedPaths": ["path/relative/to/the/selected/repository"],
+  "steps": ["One focused implementation step"],
+  "acceptance": ["An observable result"],
+  "verification": ["The exact command or check"],
+  "risks": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "structured-plan",
+  "planningMode": "structured",
+  "goal": "Replace with the observable outcome",
+  "ownedPaths": [
+    "path/relative/to/the/selected/repository"
+  ],
+  "constraints": [
+    "Preserve unrelated changes"
+  ],
+  "tasks": [
+    {
+      "id": "task-1",
+      "description": "One atomic implementation step",
+      "acceptance": "A concrete observable result"
+    }
+  ],
+  "verification": [
+    "The exact command or check that proves acceptance"
+  ],
+  "risks": []
+}
